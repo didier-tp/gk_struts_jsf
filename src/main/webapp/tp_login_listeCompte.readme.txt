@@ -1,0 +1,21 @@
+
+action saisir_login
+
+login.jsp ou l'on peut saisir 
+   numClient et password
+   
+   
+action verif_login
+   basee sur classe CompteAction et methode login
+      si error login.jsp
+      si success --> autre action recupCompte
+      
+action recup_compte  
+ basee sur classe CompteAction et methode recupComptesDuClient
+      si error login.jsp
+      si success --> listeComptes.jsp
+      
+      
+listeComptes.jsp
+   qui affiche la liste des comptes dans un tableau html
+   construit via struts2 (s:...)      
