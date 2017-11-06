@@ -29,23 +29,22 @@ public class CompteAction extends ActionSupport  implements SessionAware{
 	sessionMap=(SessionMap)map;
 	}
 	
-
 	public String login(){
+		System.out.println("login() appelé sur " + this.toString());
 		if(serviceCompte.verifAuth(numClient, password)){
 			this.sessionMap.put("numClient", this.numClient);
 			//affichage d'une chose en session
-			//via <s:property value="#session.numClient"/>
-			//dans une page jsp
+			//via <s:property value="#session.numClient"/> dans une page jsp
 			return "success";
 		}
-			
-		else{
-			this.message="echec authentification. veuillez réessayer";
+		else{ this.message="echec authentification. veuillez réessayer";
 			return "error"; //ou "input" ou ...
 		}
 	}
 	
 	public String recupComptesDuClient(){
+		System.out.println("recupComptesDuClient() appelé sur " 
+	                       + this.toString());
 		String res="success";
 		try {
 			this.comptes = serviceCompte.comptesDuClient(numClient);

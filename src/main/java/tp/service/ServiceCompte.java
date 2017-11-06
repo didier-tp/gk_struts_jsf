@@ -1,9 +1,12 @@
 package tp.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import tp.data.Compte;
+import tp.data.Virement;
 //Simulation d'un service métier (sans spring, sans database)
 public class ServiceCompte {
 	
@@ -24,14 +27,34 @@ public class ServiceCompte {
 		return res;
 	}
 	
+	//pour la simulation sans base (map en mémoire):
+	private Map<Long,Compte> mapComptes = new HashMap<Long,Compte>();
+	
+	public /*ou private*/ ServiceCompte(){
+		mapComptes.put(1L,new Compte(1L,"compte 1" , 150.0));
+		mapComptes.put(2L,new Compte(2L,"compte 2" , 50.0));
+		mapComptes.put(3L,new Compte(3L,"compte 3" , 250.0));
+	}
+	
+	public void effectuerVirement(Virement ordreVirement){
+		Compte cptDeb = mapComptes.get(ordreVirement.getNumCptDeb());
+		Compte cptCred= mapComptes.get(ordreVirement.getNumCptCred());
+		cptDeb.setSolde(cptDeb.getSolde() - ordreVirement.getMontant());
+		cptCred.setSolde(cptCred.getSolde() + ordreVirement.getMontant());
+	}
 	
 	public List<Compte> comptesDuClient(Long numClient){
-		List<Compte> comptes = new ArrayList<Compte>();
-		comptes.add(new Compte(1L,"compte 1" , 150.0));
-		comptes.add(new Compte(2L,"compte 2" , 50.0));
-		comptes.add(new Compte(3L,"compte 3" , 250.0));
-		return comptes;
-		
+		return  new ArrayList<Compte>(mapComptes.values());	
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
