@@ -16,24 +16,12 @@
 		<s:textfield name="montant" 
 		id="montant" label="montant à transférer" labelposition="left">
 		</s:textfield>
-		numCptDeb:<select name="numCptDeb" id="numCptDeb" >
-			<s:iterator value="#session.comptes" status="s1">
-				<option value='<s:property value="numero"/>'>
-					[<s:property value="numero"/>]
-					<s:property value="label"/> -
-					<s:property value="solde"/> euro(s)
-				</option>
-		</s:iterator>
-		</select>
-		numCptCred:<select name="numCptCred" id="numCptCred" >
-			<s:iterator value="#session.comptes" status="s2">
-				<option value='<s:property value="numero"/>'>
-					[<s:property value="numero"/>]
-					<s:property value="label"/> -
-					<s:property value="solde"/> euro(s)
-				</option>
-		</s:iterator>
-		</select>
+		<s:textfield name="numCptDeb" 
+		id="numCptDeb" label="numero du compte à débiter" labelposition="left">
+		</s:textfield>
+		<s:textfield name="numCptCred" 
+		id="numCptCred" label="numero du compte à créditer" labelposition="left">
+		</s:textfield>
 		<s:submit value="realiser virement"></s:submit>
 	</s:form>
 </body>

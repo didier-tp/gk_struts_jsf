@@ -49,6 +49,8 @@ public class CompteAction extends ActionSupport  implements SessionAware{
 		try {
 			this.numClient = (Long) this.sessionMap.get("numClient");
 			this.comptes = serviceCompte.comptesDuClient(numClient);
+			this.sessionMap.put("comptes", this.comptes);//pour #session.comptes dans
+			//select/s:iterator/option de virement.jsp 
 		} catch (Exception e) {
 			e.printStackTrace();
 			res="error"; // ou "input" ou ...
