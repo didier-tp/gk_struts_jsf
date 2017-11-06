@@ -47,6 +47,7 @@ public class CompteAction extends ActionSupport  implements SessionAware{
 	                       + this.toString());
 		String res="success";
 		try {
+			this.numClient = (Long) this.sessionMap.get("numClient");
 			this.comptes = serviceCompte.comptesDuClient(numClient);
 		} catch (Exception e) {
 			e.printStackTrace();

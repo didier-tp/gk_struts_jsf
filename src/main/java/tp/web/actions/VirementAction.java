@@ -14,6 +14,15 @@ import tp.service.ServiceCompte;
 public class VirementAction extends ActionSupport 
   implements SessionAware , ModelDriven<Virement> {
 	
+	private String message;
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	private Virement virement =new Virement(); 
 	
 	@Override
@@ -45,7 +54,7 @@ public class VirementAction extends ActionSupport
 			serviceCompte.effectuerVirement(this.virement);
 		} catch (Exception e) {
 			res="error";
-			//e.printStackTrace();
+			this.message="echec virement" + e.getMessage();
 		}
 		return res;
 	}

@@ -34,6 +34,16 @@
 			<result name="success" >/s2-jsp/listeComptes.jsp</result>
 			<result name="error">/s2-jsp/login.jsp</result>
 		</action>
+		
+		<action name="nouveau_virement">
+			<result>/s2-jsp/virement.jsp</result>
+		</action>
+		
+		<action name="realiser_virement" class="tp.web.actions.VirementAction"
+			method="realiserVirement">
+			<result name="success" type="redirect">recup_comptes</result>
+			<result name="error">/s2-jsp/virement.jsp</result>
+		</action>
 	
 	</package>
 </struts>

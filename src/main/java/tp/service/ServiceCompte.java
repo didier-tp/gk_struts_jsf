@@ -32,8 +32,10 @@ public class ServiceCompte {
 	
 	public /*ou private*/ ServiceCompte(){
 		mapComptes.put(1L,new Compte(1L,"compte 1" , 150.0));
-		mapComptes.put(2L,new Compte(2L,"compte 2" , 50.0));
-		mapComptes.put(3L,new Compte(3L,"compte 3" , 250.0));
+		mapComptes.put(2L,new Compte(2L,"compte 2" , 250.0));
+		mapComptes.put(3L,new Compte(3L,"compte 3" , 350.0));
+		mapComptes.put(4L,new Compte(4L,"compte 4" , 450.0));
+		mapComptes.put(5L,new Compte(5L,"compte 5" , 550.0));
 	}
 	
 	public void effectuerVirement(Virement ordreVirement){
@@ -44,7 +46,18 @@ public class ServiceCompte {
 	}
 	
 	public List<Compte> comptesDuClient(Long numClient){
-		return  new ArrayList<Compte>(mapComptes.values());	
+		List<Compte> listeComptes = new ArrayList<Compte>();
+		
+		for(Compte c : mapComptes.values()){
+			if(numClient == 1L && c.getNumero() <= 3L){
+				listeComptes.add(c);
+			}
+			else if(numClient != 1L && c.getNumero() > 3L){
+				listeComptes.add(c);
+			}
+		}
+		
+		return listeComptes;
 	}
 	
 	
