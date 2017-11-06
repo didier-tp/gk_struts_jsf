@@ -12,7 +12,16 @@ public class CompteAction extends ActionSupport {
 	
 	private Long numClient;//valeur différente pour chaque utilisateur
 	private String password;
+	private String message=null;
 	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	private List<Compte> comptes;
 	
 	//une instance instance d'un service partagée suffit
@@ -22,8 +31,10 @@ public class CompteAction extends ActionSupport {
 	public String login(){
 		if(serviceCompte.verifAuth(numClient, password))
 			return "success";
-		else
+		else{
+			this.message="echec authentification. veuillez réessayer";
 			return "error"; //ou "input" ou ...
+		}
 	}
 	
 	public String recupComptesDuClient(){

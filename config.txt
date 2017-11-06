@@ -1,0 +1,24 @@
+* HTML / CSS
+* Java
+
+* Servlet/JSP
+
+* JPA (et un peu de Spring , maven)
+
+
+* Formation Struts 2 : Ve 3 et Lu/Ma 6,7 Novembre
+* JSF 2 : 8,9,10 Novembre   (Didier DEFRANCE)
+
+----
+-jdk 1.7 ou plus
+-eclipse luna ou plus
+-tomcat 7 ou plus
+-mysql 
+
+==============
+
+https://github.com/didier-tp/gk_struts_jsf
+
+
+
+

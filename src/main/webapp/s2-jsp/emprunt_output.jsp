@@ -13,8 +13,8 @@
 	<b><s:property value="stMontant"/> </b>avec un taux annuel de <b><s:property value="stTauxAnnuel"/> % </b> <br/>
 	il faut des mensualites de <b><s:property value="mensualite"/> </b>.
 	<hr/>
-	<s:url id="saisir_emprunt_url" action="saisir_emprunt"></s:url> 
-	<s:a href="%{saisir_emprunt_url}">autre calcul emprunt</s:a>
+	<s:url id="welcome_url" action="welcome"></s:url> 
+	<s:a href="%{welcome_url}">retour vers welcome</s:a>
 	
 	
 	

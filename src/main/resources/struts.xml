@@ -19,6 +19,21 @@
 			<result name="success">/s2-jsp/emprunt_output.jsp</result>
 			<result name="input">/s2-jsp/emprunt_input.jsp</result>
 		</action>
+		
+		<action name="saisir_login">
+			<result>/s2-jsp/login.jsp</result>
+		</action>
+		<action name="verif_login" class="tp.web.actions.CompteAction"
+			method="login">
+			<result name="success" type="redirect">recup_comptes</result>
+			<result name="error">/s2-jsp/login.jsp</result>
+		</action>
+		
+		<action name="recup_comptes" class="tp.web.actions.CompteAction"
+			method="recupComptesDuClient">
+			<result name="success" >/s2-jsp/listeComptes.jsp</result>
+			<result name="error">/s2-jsp/login.jsp</result>
+		</action>
 	
 	</package>
 </struts>
