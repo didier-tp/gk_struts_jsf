@@ -1,6 +1,10 @@
 package tp.web.actions;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -8,29 +12,33 @@ import tp.data.Compte;
 import tp.service.ServiceCompte;
 
 //pplusieurs instances de la classe CompteAction
-public class CompteAction extends ActionSupport {
+public class CompteAction extends ActionSupport  implements SessionAware{
 	
 	private Long numClient;//valeur différente pour chaque utilisateur
 	private String password;
-	private String message=null;
-	
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
 	private List<Compte> comptes;
 	
 	//une instance instance d'un service partagée suffit
 	private ServiceCompte serviceCompte = 
 			       ServiceCompte.getInstance();
+	
+	private SessionMap<String,Object> sessionMap;
+	
+	@Override //from SessionAware (for session injection)
+	public void setSession(Map<String, Object> map) {
+	sessionMap=(SessionMap)map;
+	}
+	
 
 	public String login(){
-		if(serviceCompte.verifAuth(numClient, password))
+		if(serviceCompte.verifAuth(numClient, password)){
+			this.sessionMap.put("numClient", this.numClient);
+			//affichage d'une chose en session
+			//via <s:property value="#session.numClient"/>
+			//dans une page jsp
 			return "success";
+		}
+			
 		else{
 			this.message="echec authentification. veuillez réessayer";
 			return "error"; //ou "input" ou ...
@@ -74,8 +82,18 @@ public class CompteAction extends ActionSupport {
 	public void setComptes(List<Compte> comptes) {
 		this.comptes = comptes;
 	}
+
 	
 	
+private String message=null;
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	
 	
 

@@ -8,7 +8,7 @@
 <title>listeComptes</title>
 </head>
 <body>
-	<h2>liste des comptes (struts2)</h2>
+	<h2>liste des comptes pour le client <s:property value="#session.numClient"/></h2>
 	<table border="1">
 	   <tr>
 	     <th>numero</th><th>label</th><th>solde</th>
