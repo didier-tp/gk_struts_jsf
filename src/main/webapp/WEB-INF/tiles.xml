@@ -29,4 +29,19 @@
       <put-attribute name="body"   value="/s2-tiles-jsp/emprunt_output.jsp"/>      
   </definition>
   
+  <definition name="login_tile" extends="baseLayout">
+      <put-attribute name="title"  value="login"/>
+      <put-attribute name="body"   value="/s2-tiles-jsp/login.jsp"/>      
+  </definition>
+  
+  <definition name="listeComptes_tile" extends="baseLayout">
+      <put-attribute name="title"  value="listeComptes"/>
+      <put-attribute name="body"   value="/s2-tiles-jsp/listeComptes.jsp"/>      
+  </definition>
+  
+  <definition name="virement_tile" extends="baseLayout">
+      <put-attribute name="title"  value="virement"/>
+      <put-attribute name="body"   value="/s2-tiles-jsp/virement.jsp"/>      
+  </definition>
+  
 </tiles-definitions>

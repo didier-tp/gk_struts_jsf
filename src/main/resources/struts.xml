@@ -30,31 +30,38 @@
 		</action>
 		
 		<action name="saisir_login">
-			<result>/s2-jsp/login.jsp</result>
+			<!-- <result>/s2-jsp/login.jsp</result> -->
+			<result type="tiles">login_tile</result>
 		</action>
 		<action name="verif_login" class="tp.web.actions.CompteAction"
 			method="login">
 			<result name="success" type="redirect">recup_comptes</result>
-			<result name="error">/s2-jsp/login.jsp</result>
-			<result name="input">/s2-jsp/login.jsp</result> <!-- input est retourné
-			                                       par les validations automatiques
-			                                       paramétrées dans ..-validation.xml -->
+			<!-- <result name="error">/s2-jsp/login.jsp</result>
+				<result name="input">/s2-jsp/login.jsp</result> -->
+			<result name="error" type="tiles">login_tile</result>
+			<result name="input" type="tiles">login_tile</result>
+			<!-- input est retourné par les validations automatiques
+			    paramétrées dans ..-validation.xml -->
 		</action>
 		
 		<action name="recup_comptes" class="tp.web.actions.CompteAction"
 			method="recupComptesDuClient">
-			<result name="success" >/s2-jsp/listeComptes.jsp</result>
-			<result name="error">/s2-jsp/login.jsp</result>
+			<!-- <result name="success" >/s2-jsp/listeComptes.jsp</result>
+			<result name="error">/s2-jsp/login.jsp</result> -->
+			<result name="success" type="tiles">listeComptes_tile</result>
+			<result name="error" type="tiles">login_tile</result>
 		</action>
 		
 		<action name="nouveau_virement">
-			<result>/s2-jsp/virement.jsp</result>
+			<!--  <result>/s2-jsp/virement.jsp</result> -->
+			<result type="tiles">virement_tile</result>
 		</action>
 		
 		<action name="realiser_virement" class="tp.web.actions.VirementAction"
 			method="realiserVirement">
+			<!--  <result name="error">/s2-jsp/virement.jsp</result> -->
 			<result name="success" type="redirect">recup_comptes</result>
-			<result name="error">/s2-jsp/virement.jsp</result>
+			<result name="error" type="tiles">virement_tile</result>
 		</action>
 	
 	</package>
