@@ -31,6 +31,13 @@
 			<artifactId>struts2-core</artifactId>
 			<version>2.3.8</version>
 		</dependency>
+		
+		<dependency>
+   		 <groupId>org.apache.struts</groupId>
+    	<artifactId>struts2-tiles-plugin</artifactId>
+    	<version>2.3.8</version>
+	</dependency>
+	
 	</dependencies>
 	<build>
 		<plugins>

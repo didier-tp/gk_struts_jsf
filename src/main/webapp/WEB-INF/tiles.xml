@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/s2-tiles-jsp/template/baseLayout.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="header" value="/s2-tiles-jsp/default/header.jsp"/>
+      <put-attribute name="menu"   value="/s2-tiles-jsp/default/menu.jsp"/>
+      <put-attribute name="body"   value="/s2-tiles-jsp/default/body.jsp"/>
+      <put-attribute name="footer"   value="/s2-tiles-jsp/default/footer.jsp"/>
+  </definition>
+  
+  <definition name="welcome_tile" extends="baseLayout">
+      <put-attribute name="title"  value="Welcome"/>
+      <put-attribute name="body"   value="/s2-tiles-jsp/welcome.jsp"/>      
+  </definition>
+  
+  <definition name="emprunt_input_tile" extends="baseLayout">
+      <put-attribute name="title"  value="emprunt_input"/>
+      <put-attribute name="body"   value="/s2-tiles-jsp/emprunt_input.jsp"/>      
+  </definition>
+  
+  <definition name="emprunt_output_tile" extends="baseLayout">
+      <put-attribute name="title"  value="emprunt_result"/>
+      <put-attribute name="body"   value="/s2-tiles-jsp/emprunt_output.jsp"/>      
+  </definition>
+  
+</tiles-definitions>

@@ -1,0 +1,1 @@
+<div style="background-color: #e6e3ed">My Default body</div>

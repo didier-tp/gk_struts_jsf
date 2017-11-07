@@ -6,18 +6,27 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="false" />
 	<package name="tp.web.actions" namespace="/s2" extends="struts-default">
+		
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
 		<default-action-ref name="welcome" />
 		<action name="welcome">
-			<result>/s2-jsp/welcome.jsp</result>
+			<!-- <result>/s2-jsp/welcome.jsp</result> -->
+			<result type="tiles">welcome_tile</result>
 		</action>
 		 
 		<action name="saisir_emprunt">
-			<result>/s2-jsp/emprunt_input.jsp</result>
+			<!--  <result>/s2-jsp/emprunt_input.jsp</result> -->
+			<result type="tiles">emprunt_input_tile</result>
 		</action>
 		<action name="calculer_emprunt" class="tp.web.actions.CalculEmpruntAction"
 			method="calculerMensualite">
-			<result name="success">/s2-jsp/emprunt_output.jsp</result>
-			<result name="input">/s2-jsp/emprunt_input.jsp</result>
+			<!-- <result name="success">/s2-jsp/emprunt_output.jsp</result>
+			      <result name="input">/s2-jsp/emprunt_input.jsp</result> -->
+			<result name="success" type="tiles">emprunt_output_tile</result>
+			<result name="input" type="tiles">emprunt_input_tile</result>
 		</action>
 		
 		<action name="saisir_login">
