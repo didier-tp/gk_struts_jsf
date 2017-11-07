@@ -18,6 +18,3 @@
 	<s:url id="nouveau_virement_url" action="nouveau_virement"></s:url> 
 	<s:a href="%{nouveau_virement_url}">nouveau virement interne</s:a>
 	
-	<hr/>
-	<s:url id="welcome_url" action="welcome"></s:url> 
-	<s:a href="%{welcome_url}">retour accueil</s:a>
