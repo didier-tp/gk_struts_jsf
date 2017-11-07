@@ -4,6 +4,9 @@ import java.util.Map;
 
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -11,6 +14,9 @@ import com.opensymphony.xwork2.ModelDriven;
 import tp.data.Virement;
 import tp.service.ServiceCompte;
 
+@Component() //id/name par defaut de ce composant spring : 
+// virementAction (nom de classe avec minuscule au debut)
+@Scope("prototype")
 public class VirementAction extends ActionSupport 
   implements SessionAware , ModelDriven<Virement> {
 	
@@ -45,8 +51,9 @@ public class VirementAction extends ActionSupport
 	sessionMap=(SessionMap)map;
 	}
 	//une instance instance d'un service partagée suffit
-		private ServiceCompte serviceCompte = 
-				       ServiceCompte.getInstance();
+	@Autowired
+		private ServiceCompte serviceCompte; /* = 
+				       ServiceCompte.getInstance();*/
 
 	public String realiserVirement(){
 		String res="success";

@@ -5,11 +5,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
 import tp.data.Compte;
 import tp.data.Virement;
-//Simulation d'un service métier (sans spring, sans database)
+//Simulation d'un service métier (avec spring, sans database)
+@Service
+@Scope("singleton")
+//@Transactional
 public class ServiceCompte {
-	
+	/*
 	private static ServiceCompte uniqueInstance;
 	
 	public static ServiceCompte getInstance(){
@@ -17,7 +23,7 @@ public class ServiceCompte {
 			uniqueInstance=new ServiceCompte();
 		}
 		return uniqueInstance;
-	}
+	}*/
 	
 	public boolean verifAuth(Long numClient , String password){
 		boolean res=false;

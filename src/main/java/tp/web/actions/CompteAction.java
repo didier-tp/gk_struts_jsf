@@ -3,24 +3,38 @@ package tp.web.actions;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import tp.data.Compte;
 import tp.service.ServiceCompte;
 
-//pplusieurs instances de la classe CompteAction
+//plusieurs instances de la classe CompteAction
+@Component() //id/name par defaut de ce composant spring : 
+             // compteAction (nom de classe avec minuscule au debut)
+@Scope("prototype")
 public class CompteAction extends ActionSupport  implements SessionAware{
 	
 	private Long numClient;//valeur différente pour chaque utilisateur
 	private String password;
 	private List<Compte> comptes;
 	
+	@PostConstruct
+	public void apresInitSpring(){
+		System.out.println("initialise par spring");
+	}
+	
 	//une instance instance d'un service partagée suffit
-	private ServiceCompte serviceCompte = 
-			       ServiceCompte.getInstance();
+	@Autowired
+	private ServiceCompte serviceCompte ; /*= 
+			       ServiceCompte.getInstance();*/
 	
 	private SessionMap<String,Object> sessionMap;
 	
