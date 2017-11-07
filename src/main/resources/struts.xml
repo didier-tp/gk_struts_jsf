@@ -27,6 +27,9 @@
 			method="login">
 			<result name="success" type="redirect">recup_comptes</result>
 			<result name="error">/s2-jsp/login.jsp</result>
+			<result name="input">/s2-jsp/login.jsp</result> <!-- input est retourné
+			                                       par les validations automatiques
+			                                       paramétrées dans ..-validation.xml -->
 		</action>
 		
 		<action name="recup_comptes" class="tp.web.actions.CompteAction"

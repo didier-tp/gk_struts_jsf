@@ -1,0 +1,29 @@
+<!DOCTYPE validators PUBLIC 
+  		"-//Apache Struts//XWork Validator 1.0.2//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+
+
+   <field name="numClient">
+	    <field-validator type="required">
+			<message><![CDATA[ numClient is required ]]></message>
+		</field-validator>
+		<field-validator type="long">
+			<param name="min">0</param>
+			<message><![CDATA[must be positive ]]></message>
+		</field-validator>
+	</field>
+	
+	<field name="password">
+	    <field-validator type="requiredstring">
+			<message><![CDATA[ password is required ]]></message>
+		</field-validator>
+		<field-validator type="stringlength">
+		  <param name="minLength">4</param>
+		  <message><![CDATA[ at least 4 characters ]]></message>
+		</field-validator>
+
+	</field>
+ 
+</validators>

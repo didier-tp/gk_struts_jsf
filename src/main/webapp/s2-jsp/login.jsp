@@ -4,15 +4,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style type="text/css">@import url(../css/styles.css);</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>login</title>
 </head>
 <body>
 	<h2>login (client minibank)</h2>
+	
+
 	<s:if test="message != null">
 		<span style="color:red;"><s:property value="message"/></span>
 	</s:if>
-	<s:form method="post" action="verif_login">
+	<s:form method="post" action="verif_login" validate="false">
 		<s:textfield name="numClient" 
 		id="numClient" label="numClient" labelposition="left">
 		</s:textfield>

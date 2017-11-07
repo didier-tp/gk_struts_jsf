@@ -13,4 +13,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 <filter-name>struts2</filter-name>
 <url-pattern>/s2/*</url-pattern>
 </filter-mapping>
+<filter-mapping>
+<filter-name>struts2</filter-name>
+<url-pattern>/struts/*</url-pattern>
+</filter-mapping>
 </web-app>
