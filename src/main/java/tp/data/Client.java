@@ -38,6 +38,16 @@ public class Client {
 	public Client() {
 		super();
 	}
+	
+	
+
+
+
+	public Client(Long numero, String nom) {
+		super();
+		this.numero = numero;
+		this.nom = nom;
+	}
 
 
 

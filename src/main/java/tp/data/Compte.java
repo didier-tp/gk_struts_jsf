@@ -60,6 +60,11 @@ public class Compte {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
+	@Override
+	public String toString() {
+		return "Compte [numero=" + numero + ", label=" + label + ", solde=" + solde + "]";
+	}
 	
 	
 	

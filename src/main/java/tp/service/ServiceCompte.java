@@ -1,29 +1,25 @@
 package tp.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import tp.dao.ICompteDao;
+import tp.data.Client;
 import tp.data.Compte;
 import tp.data.Virement;
 //Simulation d'un service métier (avec spring, sans database)
 @Service
 @Scope("singleton")
 //@Transactional
-public class ServiceCompte {
-	/*
-	private static ServiceCompte uniqueInstance;
+public class ServiceCompte implements IServiceCompte {
 	
-	public static ServiceCompte getInstance(){
-		if(uniqueInstance==null){
-			uniqueInstance=new ServiceCompte();
-		}
-		return uniqueInstance;
-	}*/
+	@Autowired
+	private ICompteDao compteDao;
 	
 	public boolean verifAuth(Long numClient , String password){
 		boolean res=false;
@@ -33,46 +29,41 @@ public class ServiceCompte {
 		return res;
 	}
 	
-	//pour la simulation sans base (map en mémoire):
-	private Map<Long,Compte> mapComptes = new HashMap<Long,Compte>();
+		
+	public ServiceCompte(){
+		//compteDao encore à null dans constructeur et donc inutilisable.
+	}
 	
-	public /*ou private*/ ServiceCompte(){
-		mapComptes.put(1L,new Compte(1L,"compte 1" , 150.0));
-		mapComptes.put(2L,new Compte(2L,"compte 2" , 250.0));
-		mapComptes.put(3L,new Compte(3L,"compte 3" , 350.0));
-		mapComptes.put(4L,new Compte(4L,"compte 4" , 450.0));
-		mapComptes.put(5L,new Compte(5L,"compte 5" , 550.0));
+	@PostConstruct
+	public void initJeuxDeDonneesEnModeDeveloppement(){
+		if(compteDao.findCompte(1L)==null){
+			Client cli1 = compteDao.insertClient(new Client(null,"client1"));
+			Client cli2 = compteDao.insertClient(new Client(null,"client2"));
+			for(int i=1;i<=3;i++){
+				Compte c = new Compte(null,"compte "+i+" en base" , 100.0 * i);
+				c.setClient(cli1);
+				compteDao.insertCompte(c);
+			}
+			for(int i=4;i<=5;i++){
+				Compte c = new Compte(null,"compte "+i+" en base" , 100.0 * i);
+				c.setClient(cli2);
+				compteDao.insertCompte(c);
+			}
+		}
 	}
 	
 	public void effectuerVirement(Virement ordreVirement){
-		Compte cptDeb = mapComptes.get(ordreVirement.getNumCptDeb());
-		Compte cptCred= mapComptes.get(ordreVirement.getNumCptCred());
+		Compte cptDeb = compteDao.findCompte(ordreVirement.getNumCptDeb());
+		Compte cptCred= compteDao.findCompte(ordreVirement.getNumCptCred());
 		cptDeb.setSolde(cptDeb.getSolde() - ordreVirement.getMontant());
 		cptCred.setSolde(cptCred.getSolde() + ordreVirement.getMontant());
+		//compteDao.updateCompte(cptDeb); compteDao.updateCompte(cptCred);
+		//non obligatoires si @Transactional et cptDeb , cptCred à l'état persistant
 	}
 	
 	public List<Compte> comptesDuClient(Long numClient){
-		List<Compte> listeComptes = new ArrayList<Compte>();
-		
-		for(Compte c : mapComptes.values()){
-			if(numClient == 1L && c.getNumero() <= 3L){
-				listeComptes.add(c);
-			}
-			else if(numClient != 1L && c.getNumero() > 3L){
-				listeComptes.add(c);
-			}
-		}
-		
-		return listeComptes;
+		return compteDao.rechercherComptesDuClient(numClient);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

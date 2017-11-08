@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import tp.data.Client;
 import tp.data.Compte;
 
 @Repository //ou @Component
@@ -52,6 +53,15 @@ public class CompteDaoImpl implements ICompteDao {
 	public void removeCompte(Long num) {
 		Compte c = entityManager.find(Compte.class, num);
 		entityManager.remove(c);
+	}
+
+	@Override
+	public Client insertClient(Client c) {
+		//avant .persist , c.numero est à null
+		entityManager.persist(c);//avec auto_incr
+		//après .persist , c.numero n'est plus null
+		//si @GeneratedValue(strategy=IDENTITY) à coté de @Id dans Client.class
+		return c;
 	}
 
 }
