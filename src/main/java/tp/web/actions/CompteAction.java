@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import com.opensymphony.xwork2.ActionSupport;
 
 import tp.data.Compte;
-import tp.service.ServiceCompte;
+import tp.service.IServiceCompte;
 
 //plusieurs instances de la classe CompteAction
 @Component() //id/name par defaut de ce composant spring : 
@@ -33,7 +33,7 @@ public class CompteAction extends ActionSupport  implements SessionAware{
 	
 	//une instance instance d'un service partagée suffit
 	@Autowired
-	private ServiceCompte serviceCompte ; /*= 
+	private IServiceCompte serviceCompte ; /*= 
 			       ServiceCompte.getInstance();*/
 	
 	private SessionMap<String,Object> sessionMap;

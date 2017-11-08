@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import tp.data.Virement;
-import tp.service.ServiceCompte;
+import tp.service.IServiceCompte;
 
 @Component() //id/name par defaut de ce composant spring : 
 // virementAction (nom de classe avec minuscule au debut)
@@ -52,7 +52,7 @@ public class VirementAction extends ActionSupport
 	}
 	//une instance instance d'un service partagée suffit
 	@Autowired
-		private ServiceCompte serviceCompte; /* = 
+		private IServiceCompte serviceCompte; /* = 
 				       ServiceCompte.getInstance();*/
 
 	public String realiserVirement(){
