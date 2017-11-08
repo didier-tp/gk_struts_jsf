@@ -25,6 +25,15 @@ public class Virement {
 	public void setNumCptCred(Long numCptCred) {
 		this.numCptCred = numCptCred;
 	}
+	public Virement(Double montant, Long numCptDeb, Long numCptCred) {
+		super();
+		this.montant = montant;
+		this.numCptDeb = numCptDeb;
+		this.numCptCred = numCptCred;
+	}
+	public Virement() {
+		super();
+	}
 		
 	
 }

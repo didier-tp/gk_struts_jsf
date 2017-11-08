@@ -3,6 +3,7 @@ package tp.service;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -15,7 +16,7 @@ import tp.data.Virement;
 //Simulation d'un service métier (avec spring, sans database)
 @Service
 @Scope("singleton")
-//@Transactional
+@Transactional
 public class ServiceCompte implements IServiceCompte {
 	
 	@Autowired
